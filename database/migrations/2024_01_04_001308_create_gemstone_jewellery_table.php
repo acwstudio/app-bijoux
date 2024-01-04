@@ -18,8 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('colour_id');
             $table->unsignedBigInteger('facet_id');
-            $table->string('dimensions');
-            $table->float('weight');
+            $table->string('dimensions')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->float('weight')->nullable();
 
             $table->foreign('jewellery_id')->references('id')->on('jewelleries')->onDelete('cascade');
             $table->foreign('gemstone_id')->references('id')->on('gemstones')->onDelete('cascade');

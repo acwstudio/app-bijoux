@@ -76,15 +76,10 @@ class CatalogSeeder extends Seeder
                 }
 
             }
-//            dump($key);
         }
-//        array_walk_recursive($items, $this->readCatalog($items));
-//        $this->readCatalog($items);
-        dd('ok');
-//        dd($this->readCatalog($items));
     }
 
-    private function readCatalog(array $items, $parentId = null)
+    private function readCatalog(array $items, $parentId = null): array
     {
         $branch = array();
 

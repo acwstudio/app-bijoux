@@ -11,21 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jewellery_metal', function (Blueprint $table) {
+        Schema::create('jewellery_material', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('metal_id');
-            $table->unsignedBigInteger('colour_id');
+            $table->unsignedBigInteger('material_id');
             $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('metal_purity_id');
-            $table->string('coverage')->nullable();
-            $table->float('weight');
+            $table->unsignedBigInteger('colour_id');
+            $table->timestamps();
 
-            $table->foreign('jewellery_id')->references('id')->on('jewelleries')->cascadeOnDelete();
-            $table->foreign('metal_id')->references('id')->on('metals')->cascadeOnDelete();
-            $table->foreign('colour_id')->references('id')->on('colours')->cascadeOnDelete();
             $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
-            $table->foreign('metal_purity_id')->references('id')->on('metal_purities')->cascadeOnDelete();
+            $table->foreign('material_id')->references('id')->on('materials')->cascadeOnDelete();
+            $table->foreign('jewellery_id')->references('id')->on('jewelleries')->cascadeOnDelete();
+            $table->foreign('colour_id')->references('id')->on('colours')->cascadeOnDelete();
         });
     }
 
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jewellery_metal');
+        Schema::dropIfExists('jewellery_material');
     }
 };

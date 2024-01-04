@@ -14,7 +14,7 @@ class Jewellery extends Model
 
     const TYPE_RESOURCE = 'jewelleries';
 
-    protected $fillable = ['catalog_id','employee_id','vendor_code','name','slug','description','weight','active'];
+    protected $fillable = ['catalog_id', 'employee_id', 'vendor_code', 'name', 'slug', 'description', 'weight', 'active'];
 
     public function employee(): BelongsTo
     {
@@ -34,6 +34,21 @@ class Jewellery extends Model
     public function gemstones(): BelongsToMany
     {
         return $this->belongsToMany(Gemstone::class);
+    }
+
+    public function brands(): BelongsToMany
+    {
+        return $this->belongsToMany(Brand::class);
+    }
+
+    public function weaves(): BelongsToMany
+    {
+        return $this->belongsToMany(Weave::class);
+    }
+
+    public function materials(): BelongsToMany
+    {
+        return $this->belongsToMany(Material::class);
     }
 
     public function sluggable(): array

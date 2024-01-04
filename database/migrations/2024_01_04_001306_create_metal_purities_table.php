@@ -16,9 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('percentage');
             $table->string('value');
-            $table->string('karat');
             $table->boolean('active');
             $table->timestamps();
 

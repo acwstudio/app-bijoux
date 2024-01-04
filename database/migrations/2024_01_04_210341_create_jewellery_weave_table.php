@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brand_jewellery', function (Blueprint $table) {
+        Schema::create('jewellery_weave', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('jewellery_id');
-            $table->unsignedBigInteger('brand_id');
+            $table->unsignedBigInteger('weave_id');
             $table->unsignedBigInteger('employee_id');
+            $table->integer('thickness')->nullable();
+            $table->timestamps();
 
-            $table->foreign('jewellery_id')->references('id')->on('jewelleries')->cascadeOnDelete();
-            $table->foreign('brand_id')->references('id')->on('brands')->cascadeOnDelete();
             $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
+            $table->foreign('weave_id')->references('id')->on('weaves')->cascadeOnDelete();
+            $table->foreign('jewellery_id')->references('id')->on('jewelleries')->cascadeOnDelete();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brand_jewellery');
+        Schema::dropIfExists('jewellery_weave');
     }
 };
