@@ -18,7 +18,7 @@ class EmployeeSeeder extends Seeder
         Employee::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         $employees = Employee::factory()->count(3)->make();
-//        dd($users);
+
         foreach ($employees as $employee) {
             DB::table('employees')->insert([
                 "name" => $employee['name'],

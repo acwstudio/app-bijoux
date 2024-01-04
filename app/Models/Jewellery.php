@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Jewellery extends Model
 {
@@ -23,6 +24,16 @@ class Jewellery extends Model
     public function catalog(): BelongsTo
     {
         return $this->belongsTo(Catalog::class);
+    }
+
+    public function metals(): BelongsToMany
+    {
+        return $this->belongsToMany(Metal::class);
+    }
+
+    public function gemstones(): BelongsToMany
+    {
+        return $this->belongsToMany(Gemstone::class);
     }
 
     public function sluggable(): array

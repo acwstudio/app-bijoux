@@ -18,7 +18,7 @@ class CatalogSeeder extends Seeder
     public function run(): void
     {
         $items = config('seed.catalog');
-//        dd($items);
+
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('catalogs')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

@@ -29,4 +29,9 @@ class Employee extends Model
     {
         return $this->hasMany(Jewellery::class);
     }
+
+    public function metals()
+    {
+        return $this->hasMany(Metal::class);
+    }
 }

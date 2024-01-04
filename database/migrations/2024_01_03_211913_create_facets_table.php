@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('catalogs', function (Blueprint $table) {
+        Schema::create('facets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('employee_id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->text('description');
             $table->boolean('active');
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('catalogs');
+        Schema::dropIfExists('facets');
     }
 };

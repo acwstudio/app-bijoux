@@ -6,31 +6,25 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Gemstone extends Model
+class Facet extends Model
 {
     use HasFactory, Sluggable;
 
-    const TYPE_RESOURCE = 'gemstones';
+    const TYPE_RESOURCE = 'facets';
 
-    protected $fillable = ['employee_id','name','active'];
+    protected $fillable = ['employee_id','name','slug','active'];
 
-    public function employees(): BelongsTo
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
-    }
-
-    public function jewelleries(): BelongsToMany
-    {
-        return $this->belongsToMany(Jewellery::class);
     }
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'resource' => 'name'
+                'source' => 'name'
             ]
         ];
     }

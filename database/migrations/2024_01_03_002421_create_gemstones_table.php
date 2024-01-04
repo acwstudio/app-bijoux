@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('gemstones', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employee_id');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->boolean('active');
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
         });
     }
 

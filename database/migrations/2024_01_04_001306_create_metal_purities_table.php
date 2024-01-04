@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jewelleries', function (Blueprint $table) {
+        Schema::create('metal_purities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('catalog_id');
             $table->unsignedBigInteger('employee_id');
-            $table->string('vendor_code');
             $table->string('name');
-            $table->string('slug');
-            $table->text('description');
-            $table->float('weight');
+            $table->string('slug')->unique();
+            $table->string('percentage');
+            $table->string('value');
+            $table->string('karat');
             $table->boolean('active');
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees')->cascadeOnDelete();
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jewelleries');
+        Schema::dropIfExists('metal_purities');
     }
 };
