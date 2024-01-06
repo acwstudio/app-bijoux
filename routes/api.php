@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminAPI\Material\MaterialController;
 use App\Http\Controllers\AdminAPI\PreciousMetal\PreciousMetalController;
 use App\Http\Controllers\AdminAPI\Alloy\AlloyController;
 use App\Http\Controllers\AdminAPI\MetalPurity\MetalPurityController;
+use App\Http\Controllers\AdminAPI\Weave\WeaveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -73,7 +74,7 @@ Route::get('/gemstones/{id}', [GemstoneController::class, 'show'])->name('gemsto
 Route::post('/gemstones', [GemstoneController::class, 'store'])->name('gemstones.store');
 Route::patch('/gemstones/{id}', [GemstoneController::class, 'update'])->name('gemstones.update');
 Route::delete('/gemstones/{id}', [GemstoneController::class, 'destroy'])->name('gemstones.destroy');
-// many-to-many materials skus
+// many-to-many gemstones skus
 
 /*****************  METAL PURITIES ROUTES **************/
 // CRUD metal-purities
@@ -83,3 +84,12 @@ Route::post('/metal-purities', [MetalPurityController::class, 'store'])->name('m
 Route::patch('/metal-purities/{id}', [MetalPurityController::class, 'update'])->name('metal-purities.update');
 Route::delete('/metal-purities/{id}', [MetalPurityController::class, 'destroy'])->name('metal-purities.destroy');
 // many-to-one metal-purities precious-metal
+
+/*****************  Weaves ROUTES **************/
+// CRUD gemstones
+Route::get('/weaves', [WeaveController::class, 'index'])->name('weaves.index');
+Route::get('/weaves/{id}', [WeaveController::class, 'show'])->name('weaves.show');
+Route::post('/weaves', [WeaveController::class, 'store'])->name('weaves.store');
+Route::patch('/weaves/{id}', [WeaveController::class, 'update'])->name('weaves.update');
+Route::delete('/weaves/{id}', [WeaveController::class, 'destroy'])->name('weaves.destroy');
+// many-to-many weaves skus
