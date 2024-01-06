@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\AdminAPI\PreciousMetal;
+namespace App\Http\Controllers\AdminAPI\MetalPurity;
 
 use App\Http\Controllers\Controller;
-use App\Models\PreciousMetal;
+use App\Models\MetalPurity;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Integer;
 
-class PreciousMetalController extends Controller
+class MetalPurityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +28,15 @@ class PreciousMetalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PreciousMetal $preciousMetal)
+    public function show(int $id)
     {
-        return PreciousMetal::find(3)->metalPurities;
+        return MetalPurity::find($id)->preciousMetal;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PreciousMetal $preciousMetal)
+    public function update(Request $request, int $id)
     {
         //
     }
@@ -43,7 +44,7 @@ class PreciousMetalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PreciousMetal $preciousMetal)
+    public function destroy(int $id)
     {
         //
     }

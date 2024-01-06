@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminAPI\Gemstone\GemstoneController;
 use App\Http\Controllers\AdminAPI\Material\MaterialController;
 use App\Http\Controllers\AdminAPI\PreciousMetal\PreciousMetalController;
 use App\Http\Controllers\AdminAPI\Alloy\AlloyController;
+use App\Http\Controllers\AdminAPI\MetalPurity\MetalPurityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,8 @@ Route::patch('/precious-metals/{id}', [PreciousMetalController::class, 'update']
 Route::delete('/precious-metals/{id}', [PreciousMetalController::class, 'destroy'])->name('precious-metals.destroy');
 // many-to-many precious-metals skus
 
+// one-to-many precious-metal metal-purities
+
 /*****************  ALLOYS ROUTES **************/
 // CRUD alloys
 Route::get('/alloys', [AlloyController::class, 'index'])->name('alloys.index');
@@ -71,3 +74,12 @@ Route::post('/gemstones', [GemstoneController::class, 'store'])->name('gemstones
 Route::patch('/gemstones/{id}', [GemstoneController::class, 'update'])->name('gemstones.update');
 Route::delete('/gemstones/{id}', [GemstoneController::class, 'destroy'])->name('gemstones.destroy');
 // many-to-many materials skus
+
+/*****************  METAL PURITIES ROUTES **************/
+// CRUD metal-purities
+Route::get('/metal-purities', [MetalPurityController::class, 'index'])->name('metal-purities.index');
+Route::get('/metal-purities/{id}', [MetalPurityController::class, 'show'])->name('metal-purities.show');
+Route::post('/metal-purities', [MetalPurityController::class, 'store'])->name('metal-purities.store');
+Route::patch('/metal-purities/{id}', [MetalPurityController::class, 'update'])->name('metal-purities.update');
+Route::delete('/metal-purities/{id}', [MetalPurityController::class, 'destroy'])->name('metal-purities.destroy');
+// many-to-one metal-purities precious-metal

@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AlloySeeder::class);
         $this->call(MaterialSeeder::class);
         $this->call(GemstoneSeeder::class);
+        $this->call(MetalPuritySeeder::class);
     }
 }
