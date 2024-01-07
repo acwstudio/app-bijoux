@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminAPI\Catalog\CatalogChildrenRelatedController;
+use App\Http\Controllers\AdminAPI\Catalog\CatalogChildrenRelationshipsController;
 use App\Http\Controllers\AdminAPI\Catalog\CatalogController;
+use App\Http\Controllers\AdminAPI\Catalog\CatalogsParentRelatedController;
+use App\Http\Controllers\AdminAPI\Catalog\CatalogsParentRelationshipsController;
 use App\Http\Controllers\AdminAPI\Colour\ColourController;
 use App\Http\Controllers\AdminAPI\Gemstone\GemstoneController;
 use App\Http\Controllers\AdminAPI\Jewellery\JewelleriesCatalogRelatedController;
@@ -38,11 +42,27 @@ Route::get('/catalogs/{id}', [CatalogController::class, 'show'])->name('catalogs
 Route::post('/catalogs', [CatalogController::class, 'store'])->name('catalogs.store');
 Route::patch('/catalogs/{id}', [CatalogController::class, 'update'])->name('catalogs.update');
 Route::delete('/catalogs/{id}', [CatalogController::class, 'destroy'])->name('catalogs.destroy');
-// many-to-one catalog parent
-
+// many-to-one catalogs parent
+Route::get('catalogs/{id}/relationships/parent',[CatalogsParentRelationshipsController::class,'index'])
+    ->name('catalogs.relationships.parent');
+Route::patch('catalogs/{id}/relationships/parent',[CatalogsParentRelationshipsController::class,'update'])
+    ->name('catalogs.relationships.parent');
+Route::get('catalogs/{id}/parent',[CatalogsParentRelatedController::class, 'index'])
+    ->name('catalogs.parent');
 // one-to-many catalog children
-
+Route::get('catalogs/{id}/relationships/children',[CatalogChildrenRelationshipsController::class,'index'])
+    ->name('catalog.relationships.children');
+Route::patch('catalogs/{id}/relationships/children',[CatalogChildrenRelationshipsController::class,'update'])
+    ->name('catalog.relationships.children');
+Route::get('catalogs/{id}/children',[CatalogChildrenRelatedController::class, 'index'])
+    ->name('catalog.children');
 // one-to-many catalog jewelleries
+Route::get('catalogs/{id}/relationships/jewelleries',[CatalogChildrenRelationshipsController::class,'index'])
+    ->name('catalog.relationships.jewelleries');
+Route::patch('catalogs/{id}/relationships/jewelleries',[CatalogChildrenRelationshipsController::class,'update'])
+    ->name('catalog.relationships.jewelleries');
+Route::get('catalogs/{id}/jewelleries',[CatalogChildrenRelatedController::class, 'index'])
+    ->name('catalog.jewelleries');
 
 /*****************  PRECIOUS METAL ROUTES **************/
 // CRUD precious-metals

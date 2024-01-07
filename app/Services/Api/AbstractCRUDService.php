@@ -6,5 +6,5 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 abstract class AbstractCRUDService
 {
-    abstract protected function index(): QueryBuilder;
+    abstract public function index(): QueryBuilder;
 }

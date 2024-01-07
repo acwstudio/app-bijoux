@@ -35,7 +35,7 @@ trait IncludeRelatedEntitiesCollectionTrait
         $includes = $this->collection->flatMap(function ($resource) use($request){
             return $resource->included($request);
         })->unique('glob_id')->values();
-
+//        dump($includes[1]->getTable());
         return $includes->isNotEmpty() ? $includes : new MissingValue();
     }
 

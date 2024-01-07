@@ -3,17 +3,28 @@
 namespace App\Http\Controllers\AdminAPI\Catalog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\Catalogs\CatalogCollection;
 use App\Models\Catalog;
+use App\Services\Api\Catalogs\CatalogService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
+    public function __construct(
+        public CatalogService $catalogService
+    ){}
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-//        dd(Catalog::find(10)->parent);
+        $perPage = $request->get('per_page');
+
+        $items = $this->catalogService->index()->simplePaginate($perPage)->appends($request->query());
+
+        return (new CatalogCollection($items))->response();
     }
 
     /**

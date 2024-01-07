@@ -28,7 +28,7 @@ class Catalog extends Model
 
     public function jewelleries()
     {
-//        return $this->hasMany(Jewellery::class);
+        return $this->hasMany(Jewellery::class);
     }
 
     public function sluggable(): array

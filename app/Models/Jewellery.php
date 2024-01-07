@@ -44,7 +44,7 @@ class Jewellery extends Model
 
     public function preciousMetals(): BelongsToMany
     {
-        return $this->belongsToMany(PreciousMetal::class)->withPivot('weight','coverage','colour_id');
+        return $this->belongsToMany(PreciousMetal::class)->withPivot('weight','coverage','colour_id','metal_purity_id');
     }
 
     public function sluggable(): array
