@@ -69,6 +69,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Colour
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Colour withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class Colour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Gemstone
  *
  * @property int $id
@@ -90,6 +115,46 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Gemstone withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Gemstone extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Jewellery
+ *
+ * @property int $id
+ * @property int $catalog_id
+ * @property string $name
+ * @property string $slug
+ * @property string $description
+ * @property float $weight
+ * @property int $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Alloy> $alloys
+ * @property-read int|null $alloys_count
+ * @property-read \App\Models\Catalog $catalog
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Gemstone> $gemstones
+ * @property-read int|null $gemstones_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Material> $materials
+ * @property-read int|null $materials_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PreciousMetal> $preciousMetals
+ * @property-read int|null $precious_metals_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereCatalogId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery whereWeight($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Jewellery withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class Jewellery extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -121,11 +186,25 @@ namespace App\Models{
 /**
  * App\Models\MetalPurity
  *
- * @property-read \App\Models\PreciousMetal|null $preciousMetal
+ * @property int $id
+ * @property int $precious_metal_id
+ * @property string $value
+ * @property string $slug
+ * @property int $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\PreciousMetal $preciousMetal
  * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity wherePreciousMetalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity whereValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|MetalPurity withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class MetalPurity extends \Eloquent {}
@@ -141,6 +220,8 @@ namespace App\Models{
  * @property int $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\MetalPurity> $metalPurities
+ * @property-read int|null $metal_purities_count
  * @method static \Illuminate\Database\Eloquent\Builder|PreciousMetal findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|PreciousMetal newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PreciousMetal newQuery()
@@ -186,5 +267,30 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Weave
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Weave withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class Weave extends \Eloquent {}
 }
 

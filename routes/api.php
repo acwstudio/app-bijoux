@@ -1,7 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminAPI\Catalog\CatalogController;
+use App\Http\Controllers\AdminAPI\Colour\ColourController;
 use App\Http\Controllers\AdminAPI\Gemstone\GemstoneController;
+use App\Http\Controllers\AdminAPI\Jewellery\JewelleriesCatalogRelatedController;
+use App\Http\Controllers\AdminAPI\Jewellery\JewelleriesCatalogRelationshipsController;
+use App\Http\Controllers\AdminAPI\Jewellery\JewelleriesPreciousMetalsRelatedController;
+use App\Http\Controllers\AdminAPI\Jewellery\JewelleriesPreciousMetalsRelationshipsController;
+use App\Http\Controllers\AdminAPI\Jewellery\JewelleryController;
 use App\Http\Controllers\AdminAPI\Material\MaterialController;
 use App\Http\Controllers\AdminAPI\PreciousMetal\PreciousMetalController;
 use App\Http\Controllers\AdminAPI\Alloy\AlloyController;
@@ -93,3 +99,33 @@ Route::post('/weaves', [WeaveController::class, 'store'])->name('weaves.store');
 Route::patch('/weaves/{id}', [WeaveController::class, 'update'])->name('weaves.update');
 Route::delete('/weaves/{id}', [WeaveController::class, 'destroy'])->name('weaves.destroy');
 // many-to-many weaves skus
+
+/*****************  JEWELLERIES ROUTES **************/
+// CRUD jewelleries
+Route::get('/jewelleries', [JewelleryController::class, 'index'])->name('jewelleries.index');
+Route::get('/jewelleries/{id}', [JewelleryController::class, 'show'])->name('jewelleries.show');
+Route::post('/jewelleries', [JewelleryController::class, 'store'])->name('jewelleries.store');
+Route::patch('/jewelleries/{id}', [JewelleryController::class, 'update'])->name('jewelleries.update');
+Route::delete('/jewelleries/{id}', [JewelleryController::class, 'destroy'])->name('jewelleries.destroy');
+// many-to-many jewellery precious-metals
+Route::get('jewelleries/{id}/relationships/precious-metals', [JewelleriesPreciousMetalsRelationshipsController::class, 'index'])
+    ->name('jewelleries.relationships.precious-metals');
+Route::patch('jewelleries/{id}/relationships/precious-metals', [JewelleriesPreciousMetalsRelationshipsController::class, 'update'])
+    ->name('jewelleries.relationships.precious-metals');
+Route::get('jewelleries/{id}/precious-metals', [JewelleriesPreciousMetalsRelatedController::class, 'index'])
+    ->name('jewelleries.precious-metals');
+// many-to-one jewelleries catalog
+Route::get('jewelleries/{id}/relationships/catalog', [JewelleriesCatalogRelationshipsController::class, 'index'])
+    ->name('jewelleries.relationships.catalog');
+Route::patch('jewelleries/{id}/relationships/catalog', [JewelleriesCatalogRelationshipsController::class, 'update'])
+    ->name('jewelleries.relationships.catalog');
+Route::get('jewelleries/{id}/catalog', [JewelleriesCatalogRelatedController::class, 'index'])
+    ->name('jewelleries.catalog');
+
+/*****************  COLOURS ROUTES **************/
+// CRUD colours
+Route::get('/colours', [ColourController::class, 'index'])->name('colours.index');
+Route::get('/colours/{id}', [ColourController::class, 'show'])->name('colours.show');
+Route::post('/colours', [ColourController::class, 'store'])->name('colours.store');
+Route::patch('/colours/{id}', [ColourController::class, 'update'])->name('colours.update');
+Route::delete('/colours/{id}', [ColourController::class, 'destroy'])->name('colours.destroy');

@@ -16,9 +16,9 @@ class PreciousMetal extends Model
 
     protected $fillable = ['name','slug','active'];
 
-    public function skus(): BelongsToMany
+    public function jewelleries(): BelongsToMany
     {
-//        return $this->belongsToMany(Sku::class);
+        return $this->belongsToMany(Jewellery::class);
     }
 
     public function metalPurities(): HasMany

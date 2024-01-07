@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GemstoneSeeder::class);
         $this->call(MetalPuritySeeder::class);
         $this->call(WeaveSeeder::class);
+        $this->call(JewellerySeeder::class);
+        $this->call(ColourSeeder::class);
     }
 }
